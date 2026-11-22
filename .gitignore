@@ -1,0 +1,50 @@
+# Image data (never commit)
+*.npy
+*.npz
+*.pck
+*.7z
+*.zip
+*.dcm
+*.nii
+*.nii.gz
+mrnet/
+MRNet-v1.0/
+kneemri/
+
+# Trained models
+*.pt
+*.pth
+*.ckpt
+checkpoints/
+
+# Papers (copyright)
+*.pdf
+!report/**/*.pdf
+
+# Secrets
+kaggle.json
+.env
+
+# Python / Jupyter
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.venv/
+venv/
+
+# LaTeX build files
+*.aux
+*.log
+*.out
+*.bbl
+*.blg
+*.synctex.gz
+*.fls
+*.fdb_latexmk
+
+# OS / editors
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
