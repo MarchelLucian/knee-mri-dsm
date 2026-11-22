@@ -23,10 +23,11 @@ Rules that all code and results in this repository follow.
 | Split | Exams | Use |
 |---|---|---|
 | `train` | official train set minus the tuning set | training |
-| `tuning` | ~120, taken from the official train set | model selection and early stopping |
+| `tuning` | taken from the official train set (size and sampling: to be decided) | model selection and early stopping |
 | `test` | 120, the official `valid` set | final results only, used once |
 
-- The tuning set is stratified on the three labels (abnormal, ACL, meniscus).
+- The official `valid` set is the set called *tuning set* in the MRNet paper; the original test set is hidden. The official train and valid sets have no patient in common. Source: <https://stanfordmlgroup.github.io/competitions/mrnet/>
+- In the MRNet paper, the tuning set has 120 exams, sampled so that it has at least 50 positive examples of each label.
 - The split is stored in `data/splits.csv` and is the same for every experiment.
 - If the data includes patient IDs, the split is made by patient, so that all exams of one patient are in the same set. If it does not, the split is made by exam, and this is stated in the report.
 
