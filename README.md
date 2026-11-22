@@ -58,7 +58,12 @@ Predictions are saved in `results/predictions.csv` with the columns `exam_id, ta
 
 ## How to run
 
-The code runs on Kaggle with a GPU. Add the MRNet dataset to the notebook as input, then run the notebooks in `notebooks/`. See [CONVENTIONS.md](CONVENTIONS.md) for the data split, seed and file formats.
+The code runs on a local machine with an NVIDIA GPU, or on Kaggle.
+
+- **Local:** create a virtual environment, install the packages in `requirements.txt` (PyTorch with CUDA), and download MRNet to `~/data/mrnet`.
+- **Kaggle:** add the MRNet dataset to the notebook as input.
+
+The path to the data is found in `src/config.py` (or set with `MRNET_DIR`). See [CONVENTIONS.md](CONVENTIONS.md) for the platform, data split, seed and file formats.
 
 ## References
 

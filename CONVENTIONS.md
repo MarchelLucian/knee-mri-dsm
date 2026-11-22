@@ -4,18 +4,18 @@ Rules that all code and results in this repository follow.
 
 ## 1. Platform
 
-- All experiments run on **Kaggle** notebooks with a GPU: <https://www.kaggle.com/code>
-- The GPU is available only after phone verification: <https://www.kaggle.com/settings>
-- Kaggle gives about 30 GPU hours per week and sessions of at most 12 hours, so long training runs should be planned.
+- **Main:** a local machine with an NVIDIA GPU (Ubuntu / WSL, Python virtual environment, PyTorch with CUDA).
+- **Alternative:** Kaggle notebooks with a GPU: <https://www.kaggle.com/code>. Kaggle gives about 30 GPU hours per week and sessions of at most 12 hours.
+- The code is the same on both. Only the path to the data changes, and `src/config.py` finds it: `~/data/mrnet` on a local machine, `/kaggle/input/mrnet-v1` on Kaggle, or the folder set in the `MRNET_DIR` environment variable.
+- Data on a local machine is kept on the Linux disk (e.g. `~/data/`), not in a synced folder such as OneDrive.
 
 ## 2. Data
 
 | Dataset | Source | Notes |
 |---|---|---|
-| MRNet | Kaggle: <https://www.kaggle.com/datasets/cjinny/mrnet-v1> | Added to a notebook with **Add Input**. Official page: <https://stanfordmlgroup.github.io/competitions/mrnet/>. Paper: <https://doi.org/10.1371/journal.pmed.1002699> |
+| MRNet | Kaggle: <https://www.kaggle.com/datasets/cjinny/mrnet-v1> | Local: downloaded with the Kaggle CLI to `~/data/mrnet`. On Kaggle: added to a notebook with **Add Input**. Official page: <https://stanfordmlgroup.github.io/competitions/mrnet/>. Paper: <https://doi.org/10.1371/journal.pmed.1002699> |
 | KneeMRI | Zenodo: <https://zenodo.org/records/14789903> | Licence CC BY-NC-ND 4.0. Paper: <https://doi.org/10.1016/j.cmpb.2016.12.006> |
 
-- The path to the MRNet data is set in `src/config.py` (`MRNET_DIR`).
 - Image data is never committed to the repository.
 
 ## 3. Data split
