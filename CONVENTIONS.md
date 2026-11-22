@@ -28,7 +28,7 @@ Rules that all code and results in this repository follow.
 
 - The tuning set is stratified on the three labels (abnormal, ACL, meniscus).
 - The split is stored in `data/splits.csv` and is the same for every experiment.
-- The public MRNet data has no patient IDs, so a patient-level split cannot be guaranteed.
+- If the data includes patient IDs, the split is made by patient, so that all exams of one patient are in the same set. If it does not, the split is made by exam, and this is stated in the report.
 
 ## 4. Random seed
 
