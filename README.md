@@ -51,9 +51,7 @@ results/
   predictions.csv
   figures/
   tables/
-report/
-  references.bib
-  m2/main.tex             report for the datasets and baseline results
+report/                   final reports (PDF)
 ```
 
 Predictions are saved in `results/predictions.csv` with the columns `exam_id, task, plane, prob, label, seed`.
