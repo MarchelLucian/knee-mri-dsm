@@ -27,13 +27,33 @@ The tuning set is stratified on the three labels. Seed: 42. The exam IDs of each
 ## Structure
 
 ```
-data/        splits.csv
-src/data/    data checks, exploratory analysis, data split
-src/model/   preprocessing, dataset, model, training
-src/eval/    metrics and plots
-notebooks/   Kaggle notebooks
-results/     predictions, tables, figures
-report/      LaTeX source of the report
+data/
+  splits.csv              exam IDs of the train, tuning and test sets
+src/
+  config.py               seed, tasks, planes and paths
+  data/
+    check_data.py         checks that every exam is complete
+    make_splits.py        creates data/splits.csv
+    eda.py                statistics and figures about the data
+    kneemri.py            reads the KneeMRI data
+  model/
+    dataset.py            loads and preprocesses one exam
+    mrnet.py              MRNet model
+    elnet.py              ELNet model
+    train.py              trains one model (one task, one plane)
+    fuse_planes.py        combines the three planes, writes predictions.csv
+  eval/
+    metrics.py            AUC, confidence intervals, sensitivity, specificity
+    plots.py              ROC curves and tables
+    trivial_baseline.py   majority-class baseline
+notebooks/                Kaggle notebooks
+results/
+  predictions.csv
+  figures/
+  tables/
+report/
+  references.bib
+  m2/main.tex             report for the datasets and baseline results
 ```
 
 Predictions are saved in `results/predictions.csv` with the columns `exam_id, task, plane, prob, label, seed`.
