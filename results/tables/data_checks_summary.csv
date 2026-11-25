@@ -1,0 +1,7 @@
+split,plane,files,slices_min,slices_max,slices_mean,slices_sd,value_min,value_max,mean_intensity,series_max_below_255
+train,axial,1130,19,61,34.32,7.55,0,255,63.21,0
+train,coronal,1130,17,58,29.78,8.72,0,255,59.25,0
+train,sagittal,1130,17,51,30.42,6.96,0,255,58.23,0
+valid,axial,120,20,52,34.32,7.15,0,255,63.79,0
+valid,coronal,120,17,48,29.42,8.39,0,255,59.28,0
+valid,sagittal,120,21,45,30.52,6.37,0,255,57.7,0

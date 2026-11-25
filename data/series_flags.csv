@@ -1,0 +1,21 @@
+split,plane,exam_id,severity,problem,also_listed_in_kara2021
+train,sagittal,0003,high,knee not in the field of view: skin edge on the first slices then noise,yes
+train,sagittal,0582,high,almost every slice is noise; only fragments of the knee,yes
+train,sagittal,0776,high,middle slices are noise; knee visible only on some slices,yes
+train,sagittal,0544,high,field of view shifted to the lower leg; joint only at the upper edge,yes
+train,coronal,0544,high,field of view shifted to the lower leg; joint only at the upper edge,yes
+train,sagittal,0864,high,the series is coronal (fat-suppressed) not sagittal,no
+train,sagittal,1101,high,the series is not sagittal (coronal-like orientation) and has an artefact,no
+train,coronal,0310,high,the series is sagittal not coronal,yes
+train,coronal,0610,high,the series is sagittal not coronal,yes
+valid,sagittal,1230,high,the series is axial (same positions as axial 1230) not sagittal,yes
+valid,axial,1136,high,cross-sections of the leg without the knee joint; last slices are noise,yes
+valid,sagittal,1159,medium,first half shows the knee; later slices leave the knee and end in noise,yes
+train,sagittal,0370,medium,metal artefact; knee visible,yes
+train,sagittal,0665,medium,large metal artefact (implant),yes
+train,coronal,0665,medium,large metal artefact (implant),yes
+train,axial,0665,medium,large metal artefact (implant),yes
+train,axial,0577,medium,metal artefact; knee visible,yes
+train,coronal,0975,medium,noisy with a different contrast,yes
+train,coronal,1010,medium,both knees in the field of view,yes
+train,coronal,1043,medium,metal artefact (screw),yes

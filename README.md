@@ -28,7 +28,8 @@ As in the MRNet paper, the tuning set has at least 50 positive exams for each la
 
 ```
 data/
-  splits.csv              exam IDs of the train, tuning and test sets
+  splits.csv              exam IDs of the train, tuning, test and excluded sets
+  series_flags.csv        series that do not show the knee, show the wrong plane or have artefacts
 src/
   config.py               seed, tasks, planes and paths
   data/
