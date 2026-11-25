@@ -9,7 +9,7 @@ TASKS = ["abnormal", "acl", "meniscus"]
 PLANES = ["sagittal", "coronal", "axial"]
 
 # Folder with the MRNet data (the folder that holds train/ and valid/).
-# Set MRNET_DIR to override. Otherwise: Kaggle input folder on Kaggle, ~/data/mrnet on a local machine.
+# Set MRNET_DIR to choose the folder. Otherwise: Kaggle input folder on Kaggle, ~/data/mrnet on a local machine.
 ON_KAGGLE = Path("/kaggle/input").exists()
 _default_mrnet = Path("/kaggle/input/mrnet-v1") if ON_KAGGLE else Path.home() / "data" / "mrnet"
 MRNET_DIR = Path(os.environ.get("MRNET_DIR", _default_mrnet))

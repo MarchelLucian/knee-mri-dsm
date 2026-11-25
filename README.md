@@ -19,10 +19,10 @@ The image data is not stored in this repository.
 | Split | Exams | Use |
 |---|---|---|
 | train | official train set minus tuning | training |
-| tuning | ~120, taken from the official train set | model selection |
+| tuning | 120, taken from the official train set | model selection |
 | test | 120, the official validation set | final results |
 
-The tuning set is stratified on the three labels. Seed: 42. The exam IDs of each split are in `data/splits.csv` (`exam_id, split`).
+As in the MRNet paper, the tuning set has at least 50 positive exams for each label. Seed: 42. The exam IDs of each split are in `data/splits.csv` (`exam_id, split`).
 
 ## Structure
 
@@ -60,7 +60,7 @@ Predictions are saved in `results/predictions.csv` with the columns `exam_id, ta
 
 The code runs on a local machine with an NVIDIA GPU, or on Kaggle.
 
-- **Local:** create a virtual environment, install the packages in `requirements.txt` (PyTorch with CUDA), and download MRNet to `~/data/mrnet`.
+- **Local:** create a virtual environment, install the packages in `requirements.txt` (PyTorch with CUDA), download MRNet to a folder outside the repository and set `MRNET_DIR` to that folder.
 - **Kaggle:** add the MRNet dataset to the notebook as input.
 
 The path to the data is found in `src/config.py` (or set with `MRNET_DIR`). See [CONVENTIONS.md](CONVENTIONS.md) for the platform, data split, seed and file formats.

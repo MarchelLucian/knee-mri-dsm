@@ -6,14 +6,14 @@ Rules that all code and results in this repository follow.
 
 - **Main:** a local machine with an NVIDIA GPU (Ubuntu / WSL, Python virtual environment, PyTorch with CUDA).
 - **Alternative:** Kaggle notebooks with a GPU: <https://www.kaggle.com/code>. Kaggle gives about 30 GPU hours per week and sessions of at most 12 hours.
-- The code is the same on both. Only the path to the data changes, and `src/config.py` finds it: `~/data/mrnet` on a local machine, `/kaggle/input/mrnet-v1` on Kaggle, or the folder set in the `MRNET_DIR` environment variable.
-- Data on a local machine is kept on the Linux disk (e.g. `~/data/`), not in a synced folder such as OneDrive.
+- The code is the same on both. Only the path to the data changes, and `src/config.py` finds it: the folder set in the `MRNET_DIR` environment variable, `/kaggle/input/mrnet-v1` on Kaggle, or `~/data/mrnet` if `MRNET_DIR` is not set.
+- Data on a local machine is kept outside the repository and outside synced folders such as OneDrive, on a disk with enough free space (about 6 GB for MRNet). Example: `export MRNET_DIR=/mnt/d/knee-mri/data/mrnet`.
 
 ## 2. Data
 
 | Dataset | Source | Notes |
 |---|---|---|
-| MRNet | Kaggle: <https://www.kaggle.com/datasets/cjinny/mrnet-v1> | Local: downloaded with the Kaggle CLI to `~/data/mrnet`. On Kaggle: added to a notebook with **Add Input**. Official page: <https://stanfordmlgroup.github.io/competitions/mrnet/>. Paper: <https://doi.org/10.1371/journal.pmed.1002699> |
+| MRNet | Kaggle: <https://www.kaggle.com/datasets/cjinny/mrnet-v1> | Local: downloaded with the Kaggle CLI to the folder set in `MRNET_DIR`. On Kaggle: added to a notebook with **Add Input**. Official page: <https://stanfordmlgroup.github.io/competitions/mrnet/>. Paper: <https://doi.org/10.1371/journal.pmed.1002699> |
 | KneeMRI | Zenodo: <https://zenodo.org/records/14789903> | Licence CC BY-NC-ND 4.0. Paper: <https://doi.org/10.1016/j.cmpb.2016.12.006> |
 
 - Image data is never committed to the repository.
@@ -23,11 +23,11 @@ Rules that all code and results in this repository follow.
 | Split | Exams | Use |
 |---|---|---|
 | `train` | official train set minus the tuning set | training |
-| `tuning` | taken from the official train set (size and sampling: to be decided) | model selection and early stopping |
+| `tuning` | 120, taken from the official train set, with at least 50 positive exams for each label | model selection and early stopping |
 | `test` | 120, the official `valid` set | final results only, used once |
 
 - The official `valid` set is the set called *tuning set* in the MRNet paper; the original test set is hidden. The official train and valid sets have no patient in common. Source: <https://stanfordmlgroup.github.io/competitions/mrnet/>
-- In the MRNet paper, the tuning set has 120 exams, sampled so that it has at least 50 positive examples of each label.
+- The tuning set is built in the same way as in the MRNet paper: 120 exams, sampled so that it has at least 50 positive examples of each label.
 - The split is stored in `data/splits.csv` and is the same for every experiment.
 - If the data includes patient IDs, the split is made by patient, so that all exams of one patient are in the same set. If it does not, the split is made by exam, and this is stated in the report.
 

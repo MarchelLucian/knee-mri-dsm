@@ -1,1 +1,1 @@
-"""AUC with bootstrap 95% confidence intervals, accuracy, sensitivity and specificity for each task."""
+"""AUC with 95% confidence intervals, accuracy, sensitivity and specificity for each task."""
