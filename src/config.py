@@ -5,6 +5,11 @@ from pathlib import Path
 
 SEED = 42
 
+# Intensity normalisation of the 0-255 slices, as in the authors' code (Bien et al., 2018, S1) and in
+# Dunnhofer et al. (2021): (x - 58.09) / 49.73 for every plane.
+NORM_MEAN = 58.09
+NORM_SD = 49.73
+
 TASKS = ["abnormal", "acl", "meniscus"]
 PLANES = ["sagittal", "coronal", "axial"]
 
