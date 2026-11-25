@@ -23,7 +23,12 @@ checkpoints/
 
 # Secrets
 kaggle.json
+access_token
 .env
+
+# Predictions and runs (they contain the MRNet labels, which may not be redistributed)
+results/predictions*.csv
+runs/
 
 # Python / Jupyter
 __pycache__/
