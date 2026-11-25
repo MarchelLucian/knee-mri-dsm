@@ -46,6 +46,8 @@ src/
     metrics.py            AUC, confidence intervals, sensitivity, specificity
     plots.py              ROC curves and tables
     trivial_baseline.py   majority-class baseline
+tests/
+  test_metrics.py         checks of the metrics on synthetic predictions
 notebooks/                Kaggle notebooks
 results/
   predictions.csv
