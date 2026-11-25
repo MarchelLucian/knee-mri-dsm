@@ -1,0 +1,7 @@
+split,task,exams,positives,auc_sagittal,auc_coronal,auc_axial
+train,abnormal,1002,810,0.735,0.728,0.75
+train,acl,1002,150,0.486,0.458,0.508
+train,meniscus,1002,339,0.629,0.629,0.622
+tuning,abnormal,120,95,0.632,0.656,0.62
+tuning,acl,120,54,0.529,0.518,0.515
+tuning,meniscus,120,52,0.582,0.633,0.574

@@ -1,0 +1,6 @@
+split,exams,abnormal_n,abnormal_pct,acl_n,acl_pct,meniscus_n,meniscus_pct
+train,1002,810,80.8,150,15.0,339,33.8
+tuning,120,95,79.2,54,45.0,52,43.3
+test,120,95,79.2,54,45.0,52,43.3
+excluded,8,8,100.0,4,50.0,6,75.0
+official train (all),1130,913,80.8,208,18.4,397,35.1

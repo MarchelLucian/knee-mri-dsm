@@ -1,0 +1,6 @@
+abnormal_acl_meniscus,meaning,train,tuning,test,excluded
+000,normal,192,25,25,0
+100,"abnormal, no ACL or meniscus tear",412,20,20,1
+101,abnormal + meniscus tear,248,21,21,3
+110,abnormal + ACL tear,59,23,23,1
+111,abnormal + ACL and meniscus tear,91,31,31,3
