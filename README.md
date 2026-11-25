@@ -21,8 +21,9 @@ The image data is not stored in this repository.
 | train | official train set minus tuning | training |
 | tuning | 120, taken from the official train set | model selection |
 | test | 120, the official validation set | final results |
+| excluded | 8, from the official train set | not used: a series does not show the knee or shows the wrong plane (`data/series_flags.csv`) |
 
-As in the MRNet paper, the tuning set has at least 50 positive exams for each label. Seed: 42. The exam IDs of each split are in `data/splits.csv` (`exam_id, split`).
+Following the MRNet paper, the tuning set has at least 50 positive exams for each label; it has the same label composition as the official validation set and is drawn at random from the official train set. Seed: 42. The exam IDs of each split are in `data/splits.csv` (`exam_id, split`).
 
 ## Structure
 

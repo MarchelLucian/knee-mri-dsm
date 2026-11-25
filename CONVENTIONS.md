@@ -23,11 +23,12 @@ Rules that all code and results in this repository follow.
 | Split | Exams | Use |
 |---|---|---|
 | `train` | official train set minus the tuning set | training |
-| `tuning` | 120, taken from the official train set, with at least 50 positive exams for each label | model selection and early stopping |
+| `tuning` | 120, taken from the official train set, with the same label composition as the official `valid` set (at least 50 positive exams for each label) | model selection (choice of the epoch) |
 | `test` | 120, the official `valid` set | final results only, used once |
+| `excluded` | 8 train exams with a series that does not show the knee or shows another plane than its folder (listed in `data/series_flags.csv`) | not used |
 
 - The official `valid` set is the set called *tuning set* in the MRNet paper; the original test set is hidden. The official train and valid sets have no patient in common. Source: <https://stanfordmlgroup.github.io/competitions/mrnet/>
-- The tuning set is built in the same way as in the MRNet paper: 120 exams, sampled so that it has at least 50 positive examples of each label.
+- The tuning set follows the rule of the MRNet paper (120 exams, at least 50 positive examples of each label), but it is drawn from the official train set and split by exam. For each of the label combinations (abnormal, ACL, meniscus) it has as many exams as the official `valid` set, drawn at random with seed 42.
 - The split is stored in `data/splits.csv` and is the same for every experiment.
 - If the data includes patient IDs, the split is made by patient, so that all exams of one patient are in the same set. If it does not, the split is made by exam, and this is stated in the report.
 
@@ -42,7 +43,7 @@ Rules that all code and results in this repository follow.
 | Column | Values |
 |---|---|
 | `exam_id` | exam ID as in the MRNet file names, e.g. `0000` |
-| `split` | `train`, `tuning` or `test` |
+| `split` | `train`, `tuning`, `test` or `excluded` |
 
 ### `results/predictions.csv`
 
