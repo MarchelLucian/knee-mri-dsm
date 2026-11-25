@@ -9,7 +9,8 @@ import numpy as np
 import pandas as pd
 from scipy.stats import mannwhitneyu
 
-from src.eval.metrics import auc_bootstrap_ci, evaluate_predictions, threshold_metrics, wilson_ci
+from src.eval.metrics import (auc_bootstrap_ci, evaluate_predictions, paired_auc_difference,
+                              threshold_metrics, wilson_ci)
 
 # Test set of the same size as the official MRNet valid set: 120 exams, 54 ACL positives.
 N, N_POS = 120, 54
@@ -58,6 +59,14 @@ def test_known_confusion_matrix():
     assert np.isclose(m["sensitivity"][0], 3 / 4)
     assert np.isclose(m["specificity"][0], 5 / 7)
     assert np.isclose(m["accuracy"][0], 8 / 11)
+
+
+def test_paired_difference():
+    probs = np.random.default_rng(5).random(N)
+    assert paired_auc_difference(LABELS, probs, probs, n_bootstrap=200) == (0.0, 0.0, 0.0)
+    perfect = np.where(LABELS == 1, 0.9, 0.1)
+    delta, low, high = paired_auc_difference(LABELS, perfect, probs, n_bootstrap=200)
+    assert np.isclose(delta, 1.0 - auc_bootstrap_ci(LABELS, probs, n_bootstrap=10)[0]) and 0 < low <= delta <= high
 
 
 def test_wilson_matches_mrnet_paper():

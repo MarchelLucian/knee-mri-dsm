@@ -59,6 +59,24 @@ def auc_bootstrap_ci(labels, probs, n_bootstrap=N_BOOTSTRAP, seed=SEED, alpha=0.
     return auc, low, high
 
 
+def paired_auc_difference(labels, probs_a, probs_b, n_bootstrap=N_BOOTSTRAP, seed=SEED, alpha=0.05):
+    """AUC(a) - AUC(b) on the same exams, with a stratified percentile bootstrap interval.
+    The same resampled exams are used for both models in every resample. Returns (delta, low, high)."""
+    labels, probs_a = check_inputs(labels, probs_a)
+    _, probs_b = check_inputs(labels, probs_b)
+    pos, neg = np.where(labels == 1)[0], np.where(labels == 0)[0]
+    if len(pos) == 0 or len(neg) == 0:
+        raise ValueError("AUC needs at least one positive and one negative exam.")
+    rng = np.random.default_rng(seed)
+    deltas = np.empty(n_bootstrap)
+    for i in range(n_bootstrap):
+        idx = np.r_[rng.choice(pos, len(pos)), rng.choice(neg, len(neg))]
+        deltas[i] = roc_auc_score(labels[idx], probs_a[idx]) - roc_auc_score(labels[idx], probs_b[idx])
+    delta = roc_auc_score(labels, probs_a) - roc_auc_score(labels, probs_b)
+    low, high = np.quantile(deltas, [alpha / 2, 1 - alpha / 2])
+    return delta, low, high
+
+
 def wilson_ci(successes, total, z=Z_95):
     """Return (proportion, low, high) with the Wilson score interval."""
     if total == 0:
