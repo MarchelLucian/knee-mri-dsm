@@ -1,0 +1,20 @@
+quantity,value
+volumes,917
+exams,909
+exams with 1 volume(s),902
+exams with 2 volume(s),6
+exams with 3 volume(s),1
+volumes: healthy,690
+volumes: partially injured,172
+volumes: completely ruptured,55
+exams: healthy,683
+exams: partially injured,171
+exams: completely ruptured,55
+exams: injured (partial or complete),226
+exams: injured (%),24.9
+exams with volumes of both knee sides,0
+volumes with kneeLR = 0 (meaning not documented),448
+volumes with kneeLR = 1 (meaning not documented),469
+roiHeight (pixels): min / median / max,62 / 92 / 124
+roiWidth (pixels): min / median / max,61 / 91 / 136
+roiDepth (slices): min / median / max,2 / 3 / 6

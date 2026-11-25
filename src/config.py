@@ -24,6 +24,9 @@ def _data_folder(path):
 
 MRNET_DIR = _data_folder(os.environ.get("MRNET_DIR", _default_mrnet))
 
+# Folder with the KneeMRI data (metadata.csv and the volumes). Set KNEEMRI_DIR to choose the folder.
+KNEEMRI_DIR = Path(os.environ.get("KNEEMRI_DIR", Path.home() / "data" / "kneemri"))
+
 ROOT = Path(__file__).resolve().parents[1]
 SPLITS_CSV = ROOT / "data" / "splits.csv"
 SERIES_FLAGS_CSV = ROOT / "data" / "series_flags.csv"
