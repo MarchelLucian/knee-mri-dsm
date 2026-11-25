@@ -6,7 +6,7 @@ We train deep learning models that read knee MRI exams and detect three things: 
 
 ## Data
 
-- **MRNet**: 1,370 knee MRI exams from Stanford, each with sagittal, coronal and axial series.
+- **MRNet**: 1,370 knee MRI exams from Stanford, each with sagittal, coronal and axial series. 1,250 of them are public (train 1,130, valid 120).
   - Kaggle: https://www.kaggle.com/datasets/cjinny/mrnet-v1
   - Official page: https://stanfordmlgroup.github.io/competitions/mrnet/
 - **KneeMRI**: 917 knee MRI volumes from Rijeka, labelled for ACL injury.

@@ -7,7 +7,7 @@ Rules that all code and results in this repository follow.
 - **Main:** a local machine with an NVIDIA GPU (Ubuntu / WSL, Python virtual environment, PyTorch with CUDA).
 - **Alternative:** Kaggle notebooks with a GPU: <https://www.kaggle.com/code>. Kaggle gives about 30 GPU hours per week and sessions of at most 12 hours.
 - The code is the same on both. Only the path to the data changes, and `src/config.py` finds it: the folder set in the `MRNET_DIR` environment variable, `/kaggle/input/mrnet-v1` on Kaggle, or `~/data/mrnet` if `MRNET_DIR` is not set.
-- Data on a local machine is kept outside the repository and outside synced folders such as OneDrive, on a disk with enough free space (about 6 GB for MRNet). Example: `export MRNET_DIR=/mnt/d/knee-mri/data/mrnet`.
+- Data on a local machine is kept outside the repository and outside synced folders such as OneDrive, on a disk with enough free space (MRNet is about 7.7 GB, and about twice that while the archive is extracted). Example: `export MRNET_DIR=/mnt/d/knee-mri/data/MRNet-v1.0` (the folder that holds `train/`, `valid/` and the label CSV files; if it has a subfolder `MRNet-v1.0/`, that subfolder is used).
 
 ## 2. Data
 
