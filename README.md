@@ -96,7 +96,26 @@ python -m src.model.safety_net --features /path/to/features/alexnet_frozen_B.npz
 # 7. MRNet: one network per task (abnormal, acl, meniscus) and plane (sagittal, coronal, axial)
 python -m src.model.train --task acl --plane sagittal --epochs 50 --out /path/to/runs
 
-# Metrics from a predictions file
+# 8. ELNet: one network per task, on the plane used in the ELNet paper
+python -m src.model.train_elnet --task acl --epochs 200 --out /path/to/runs
+
+# 9. Combine the three planes of each task (logistic regression fitted on the train predictions, as in MRNet;
+#    "mean" is the plain average, used as a check). Run it for MRNet and for the frozen-feature baseline.
+python -m src.model.fuse_planes --predictions /path/to/runs/*_seed42/predictions.csv --method lr_train --out /path/to/final_eval/mrnet_fused_lr_train.csv
+python -m src.model.fuse_planes --predictions /path/to/runs/*_seed42/predictions.csv --method mean --out /path/to/final_eval/mrnet_fused_mean.csv
+
+# 10. Trivial baselines: majority class, and logistic regression on the number of slices
+python -m src.eval.trivial_baseline --kind majority --out /path/to/final_eval/trivial_majority.csv
+python -m src.eval.trivial_baseline --kind slices --out /path/to/final_eval/trivial_slices.csv
+
+# 11. Evaluate all models on the same exams: first on tuning; on test only once, at the end
+python -m src.eval.final_evaluation --split tuning --final /path/to/final_eval --runs /path/to/runs --elnet /path/to/elnet_predictions --out /path/to/final_eval/tuning
+
+# Tests of the metrics and of the plane combination
+python -m tests.test_metrics
+python -m tests.test_fusion
+
+# Metrics from a single predictions file
 python -m src.eval.metrics --predictions /path/to/predictions.csv --out /path/to/metrics.csv
 ```
 
@@ -115,6 +134,7 @@ src/
     make_splits.py         creates data/splits.csv
     eda.py                 statistics and figures about the data
     kneemri.py             summarises the KneeMRI metadata
+    fix_redivis_labels.py  restores the label files of the Redivis download to the original format
   model/
     dataset.py             loads, augments and normalises one series
     mrnet.py               MRNet model
@@ -122,14 +142,18 @@ src/
     frozen_features.py     frozen ImageNet AlexNet features (baseline)
     safety_net.py          logistic regression on the frozen features (baseline)
     normalisation_check.py compares intensity normalisations on the tuning set
-    fuse_planes.py         combines the three planes of each task (planned)
-    elnet.py               ELNet model (planned)
+    fuse_planes.py         combines the three planes of each task
+    elnet.py               ELNet model
+    train_elnet.py         trains one ELNet network (one task)
   eval/
     metrics.py             AUC, confidence intervals, sensitivity, specificity, paired comparison
-    plots.py               ROC curves and tables (planned)
-    trivial_baseline.py    majority-class baseline (planned)
+    plots.py               ROC curves and tables
+    trivial_baseline.py    trivial baselines (majority class, number of slices)
+    final_evaluation.py    evaluates all models on the same exams and compares them in pairs
+    learning_curve.py      training and tuning loss per epoch
 tests/
   test_metrics.py          checks of the metrics on synthetic predictions
+  test_fusion.py           checks of the plane combination and the trivial baselines
 results/
   tables/                  data checks, data description, normalisation check
   figures/                 figures for the report
