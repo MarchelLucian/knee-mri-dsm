@@ -14,13 +14,13 @@ We train models that read knee MRI exams and detect three things: an abnormal kn
 | 4 | Evaluation code and its tests | `src/eval/metrics.py`, `tests/test_metrics.py` | done |
 | 5 | Choose the intensity normalisation (tuning set only) | `src/model/normalisation_check.py` | done |
 | 6 | Baseline: frozen ImageNet AlexNet + logistic regression | `src/model/frozen_features.py`, `src/model/safety_net.py` | done |
-| 7 | MRNet: 9 networks (3 tasks × 3 planes) | `src/model/dataset.py`, `src/model/mrnet.py`, `src/model/train.py` | in progress |
-| 8 | Combine the three planes of each task | `src/model/fuse_planes.py` | planned |
-| 9 | ELNet | `src/model/elnet.py` | planned |
-| 10 | ROC curves and a majority-class baseline | `src/eval/plots.py`, `src/eval/trivial_baseline.py` | planned |
-| 11 | Final evaluation on the test set, once, for all models together | `src/eval/metrics.py` | planned |
-
-Files of planned steps contain only a one-line description for now.
+| 7 | MRNet: 9 networks (3 tasks × 3 planes) | `src/model/dataset.py`, `src/model/mrnet.py`, `src/model/train.py` | done |
+| 8 | Combine the three planes of each task | `src/model/fuse_planes.py` | done |
+| 9 | ELNet: one network per task | `src/model/elnet.py`, `src/model/train_elnet.py` | done |
+| 10 | ROC curves and trivial baselines (majority class, number of slices) | `src/eval/plots.py`, `src/eval/trivial_baseline.py` | done |
+| 11 | Final evaluation on the test set, once, for all models together | `src/eval/final_evaluation.py`, `results/tables/results_test.csv` | done |
+| 12 | Test the trained models on KneeMRI (another hospital and scanner) | | next |
+| 13 | Check whether the models use the number of slices as a shortcut | | next |
 
 ## Rules shared by all models
 
@@ -157,7 +157,6 @@ tests/
 results/
   tables/                  data checks, data description, normalisation check, test results
   figures/                 figures for the report
-notebooks/                 Kaggle notebooks
 report/                    final reports (PDF)
 ```
 

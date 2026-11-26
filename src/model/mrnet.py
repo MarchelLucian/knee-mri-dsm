@@ -5,7 +5,6 @@ every slice of one series, each slice gives a 256-value vector after global aver
 element-wise maximum over slices gives one vector per series, and a linear layer gives one logit.
 """
 
-import torch
 from torch import nn
 from torchvision.models import AlexNet_Weights, alexnet
 

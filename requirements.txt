@@ -1,7 +1,8 @@
-torch
-torchvision
-numpy
-pandas
-scikit-learn
-matplotlib
-tqdm
+# Python 3.12; versions used for the results in this repository
+torch==2.15.0
+torchvision==0.29.2
+numpy==2.5.5
+pandas==3.1.1
+scikit-learn==1.9.1
+scipy==1.18.1
+matplotlib==3.11.2
