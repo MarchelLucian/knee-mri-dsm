@@ -155,7 +155,7 @@ tests/
   test_metrics.py          checks of the metrics on synthetic predictions
   test_fusion.py           checks of the plane combination and the trivial baselines
 results/
-  tables/                  data checks, data description, normalisation check
+  tables/                  data checks, data description, normalisation check, test results
   figures/                 figures for the report
 notebooks/                 Kaggle notebooks
 report/                    final reports (PDF)
